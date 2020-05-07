@@ -12,7 +12,7 @@ if (catSearch === '') {
 
 const breedNames = Object.keys(list.breeds);
 if (breedNames.includes(catSearch) === false) {
-  throw "Oh dear, I don't know that kind of cat";
+  throw "Oh dear, I don't know that kind of cat, but here's a list of what I do know: " , breedNames;
 }
 
 let key = list.breeds[catSearch];
