@@ -1,7 +1,10 @@
 let request = require('request');
 let list = require('./breedId.js');
 
-let key = list.breeds.Toyger;
+let requestedSearch = process.argv.slice(2);
+
+
+let key = list.breeds[requestedSearch[0]];
 console.log(key);
 
 request(`https://api.thecatapi.com/v1/breeds/search?q=${key}`, function (error, response, body) {
