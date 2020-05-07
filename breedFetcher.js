@@ -18,7 +18,7 @@ if (breedNames.includes(catSearch) === false) {
 let key = list.breeds[catSearch];
 
 
-request(`https://api.thecatapi.com/v1/breeds/search?q=${key}`, function (error, response, body) {
+request(`https://api.thecatapi.com/v1/breeds/search?q=${key}`, function(error, response, body) {
   if (error) console.log('error:', error);
   if (response.statusCode !== 200) console.log('statusCode: ', response && response.statusCode);
 
