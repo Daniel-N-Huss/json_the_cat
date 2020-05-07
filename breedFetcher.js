@@ -1,7 +1,10 @@
 let request = require('request');
-let breeds = require('./breedId.js');
+let list = require('./breedId.js');
 
-request('https://api.thecatapi.com/v1/breeds/search?q=sib', function (error, response, body) {
+let key = list.breeds.Toyger;
+console.log(key);
+
+request(`https://api.thecatapi.com/v1/breeds/search?q=${key}`, function (error, response, body) {
   console.log('error:', error);
   console.log('statusCode: ', response && response.statusCode);
 //  console.log('body: ', body);
