@@ -1,14 +1,6 @@
 let request = require('request');
 let list = require('./breedId.js');
 
-// let requestedSearch = process.argv.slice(2);
-
-// let catSearch = requestedSearch.join(' ');
-
-// console.log(requestedSearch);
-// if (catSearch === '') {
-  // throw 'Uh oh, no cat specified in command line';
-// }
 
 // const breedNames = Object.keys(list.breeds);
 // if (breedNames.includes(catSearch) === false) {
@@ -22,17 +14,11 @@ let list = require('./breedId.js');
 const fetchBreedDescription = function(breedName, dataReturner) {
 
   request(`https://api.thecatapi.com/v1/breeds/search?q=${breedName}`, function(error, response, body) {
-    if (error) console.log('error:', error);
-    if (response.statusCode !== 200) console.log('statusCode: ', response && response.statusCode);
-
-    const data = JSON.parse(body);
-    if (!error) dataReturner(data);
+    const retreivedData = JSON.parse(body);
+    const descriptionData = retreivedData[0].description;
+    dataReturner(error, descriptionData);
   });
 
 };
 
-const printOutDetails = data => {
-  console.log(data[0].description);
-};
-
-fetchBreedDescription('Bomb', printOutDetails);
+module.exports = { fetchBreedDescription };
